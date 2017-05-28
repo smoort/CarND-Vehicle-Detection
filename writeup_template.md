@@ -1,11 +1,11 @@
-##Writeup Template
-###You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
+# **Vehicle Detection and Tracking** 
+
+### This is a write up on the vehicle detection and tracking project
+
 
 ---
 
-**Vehicle Detection Project**
-
-The goals / steps of this project are the following:
+### **Goals of the vehicle detection and tracking Project**
 
 * Perform a Histogram of Oriented Gradients (HOG) feature extraction on a labeled training set of images and train a classifier Linear SVM classifier
 * Optionally, you can also apply a color transform and append binned color features, as well as histograms of color, to your HOG feature vector. 
@@ -15,34 +15,50 @@ The goals / steps of this project are the following:
 * Estimate a bounding box for vehicles detected.
 
 [//]: # (Image References)
-[image1]: ./examples/car_not_car.png
-[image2]: ./examples/HOG_example.jpg
-[image3]: ./examples/sliding_windows.jpg
-[image4]: ./examples/sliding_window.jpg
-[image5]: ./examples/bboxes_and_heat.png
-[image6]: ./examples/labels_map.png
-[image7]: ./examples/output_bboxes.png
+[image1]: ./output_images/Training Data Distribution.png
+[image2]: ./output_images/car_not_car.png
+[image2]: ./output_images/HOG_example.jpg
+[image3]: ./output_images/sliding_windows.jpg
+[image4]: ./output_images/sliding_window.jpg
+[image5]: ./output_images/bboxes_and_heat.png
+[image6]: ./output_images/labels_map.png
+[image7]: ./output_images/output_bboxes.png
 [video1]: ./project_video.mp4
 
-## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
-###Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
-
 ---
-###Writeup / README
 
-####1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  [Here](https://github.com/udacity/CarND-Vehicle-Detection/blob/master/writeup_template.md) is a template writeup for this project you can use as a guide and a starting point.  
+### *Histogram of Oriented Gradients (HOG)*
 
-You're reading it!
+**1. Explain how (and identify where in your code) you extracted HOG features from the training images.**
 
-###Histogram of Oriented Gradients (HOG)
+The code for this reading and visualizing training data can be found under the "Extract training data" section of the IPython notebook.  
+The code for extracting features is contained in the function **_extract_features()_** that can be found under the "Extract features for training" section of the IPython notebook.  
 
-####1. Explain how (and identify where in your code) you extracted HOG features from the training images.
-
-The code for this step is contained in the first code cell of the IPython notebook (or in lines # through # of the file called `some_file.py`).  
-
-I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
+**_Data Preparation_**
+* Car and non-car data was read from the training dataset provided
+* The data was merged to create the full training dataset
+* The number of car and non-car data is reviewed to ensure they are balanced.
+* Sample car and non-car images are visualized to ensure the input data is not corrupted.
 
 ![alt text][image1]
+
+![alt text][image2]
+
+**_Feature Extraction Parameters_**
+
+The final parameters used for feature extraction are shown below :
+
+| Parameter                  |     Value	          | 
+|:--------------------------:|:----------------------:| 
+| Features considered	     | Color, Spatial, HOG	  |
+| Color Space                | YCrCb				  |
+| HOG orientations           | 9	 	              |
+| HOG pixels per cell   	 | 8	 	              |
+| HOG cells per block        | 2	 	              |
+| HOG Channel       	     | All	 	              |
+| Spatial binning dimensions | 32x32	 	          |
+| Number of histogram bins   | 32	 				  |
+
 
 I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  I grabbed random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
 
