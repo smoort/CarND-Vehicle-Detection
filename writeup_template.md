@@ -74,7 +74,7 @@ The final parameters used for feature extraction are shown below :
 
 Below is the visualiztion of the feature extraction on a sample car and non image.
 
-![alt text][image2]
+![alt text][image3]
 
 ####2. Explain how you settled on your final choice of HOG parameters.
 
@@ -90,7 +90,7 @@ I trained a linear SVM using...
 
 I decided to search random window positions at random scales all over the image and came up with this (ok just kidding I didn't actually ;):
 
-![alt text][image3]
+![alt text][image9]
 
 ####2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
