@@ -116,11 +116,19 @@ The code for running the search and drawing boxes is contained in the function *
     * The above process is repeated for each scale. 
 * The result of the sliding window search is a list of boxes where cars were identified. 
 
+**_Removing false positives_**
+
+* A heat map based false postive reduction logic is implemented
+* Each box identified is filled with binary value 1.
+* Value in areas with overlapping boxes are summed to provide a heat map view.
+* A heat threshold of 3 is set - any area without three overlapping boxes is discarded as false positive.
+* scipy.ndimage.measurements.label() is used to identify individual blobs in the heatmap. These blobs represents vehicles in the image.
+
 The below image shows the full set of overlapping windows that will be used for detecting vehicles.    
 
 ![alt text][image4]
 
-####2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
+### *2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?*
 
 Below is the result of the pipeline on a test image
 
@@ -135,17 +143,23 @@ Below is the result of the pipeline on a test image
 * The number of scales were experimented between 2 scales to 6 scales.  Using 4 scales provided good prediction accuracy but at the cost of slight increase in prediction time.  The cost benefit was good enough to consider using 4 scales.
 ---
 
-### Video Implementation
+### *Video Implementation*
 
-####1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
-Here's a [link to my video result](./project_video.mp4)
+** 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)**
 
+The final video output video_output.mp4 can be found in https://github.com/smoort/CarND-Vehicle-Detection repo.
 
 ####2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
 
-I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  
+The code for removing false positives is contained in the function **detection_pipeline()_** that can be found under the "Vehicle Detection Pipeline" section of the IPython notebook. 
 
-*A heat threshold of 3 has been set for this project - only images that have atleast 3 detections are only considered as valid vehicles.  Others are filtered as false positive.
+**_Removing false positives using previous vehicle position_**
+
+* The heat map identified in a frame are recorded in a tracker called track.
+* The heat map from the current frame is added to the heat maps from the last 3 frames and averaged out.
+* A heat threshold of 3 is set - any area without three overlapping boxes is discarded as false positive.
+* This will ensure that any false positive identified only in the current frame is discarded by the threshold.
+* scipy.ndimage.measurements.label() is used to identify individual blobs in the heatmap. These blobs represents vehicles in the image.
 
 Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
 
