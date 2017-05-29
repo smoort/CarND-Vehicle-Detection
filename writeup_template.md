@@ -153,7 +153,7 @@ The code for removing false positives is contained in the function **detection_p
 
 **_Removing false positives using previous vehicle position_**
 
-* The heat map identified in a frame are recorded in a tracker called track.
+* The heat map identified in a frame are recorded in a tracker called track.  This is used to track the location of vehicles and add increased weight for such locations in subsequent frames.  This will help detecting and removing false positives which will not show up in consequtive frames.
 * The heat map from the current frame is added to the heat maps from the last 5 frames and averaged out.
 * A heat threshold of 5 is set - any area without three overlapping boxes is discarded as false positive.
 * This will ensure that any false positive identified only in the current frame is discarded by the threshold.
@@ -175,9 +175,30 @@ Here's an example result showing the heatmap from a series of frames of video, t
 
 ---
 
-###Discussion
+### **Discussion**
 
-####1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
+**1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?**
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+**_Problems / Issues faced_**
 
+* The feature extraction parameter determination took time as the right balance between accuracy and performance is needed.
+* The prediction pipeline is processing heavy and takes time.  For a real time scenario, the prediction has to be real quick.
+* Vehicle coming in opposite direction are also getting detected.  Not sure if this is a problem though.
+
+**_Where will your pipeline likely fail_**
+
+* The pipeline might fail if vehicle types not present in training data are encountered - eg. sports cars, altered vehicles etc
+* Fast moving vehicles might fail detection as their location in the frame changes drastically leading - this might lead to the detection getting ignored as false positive
+* The pipeline might fail under low-light or glare conditions where vehicle features might not be fully visible
+
+**_What could you do to make it more robust?**
+
+* Training with a wide variety of vehicles and vehicle orientations will improve the success rate.
+
+
+---
+
+**Stand Out Implementation**
+
+*  The vehicle detection is combined with lane detection
+*  On top of vehicle detection, tracking has also been implemented by smooth heat over multiple frames - this helps reduce false positives
