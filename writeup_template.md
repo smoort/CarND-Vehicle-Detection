@@ -17,8 +17,9 @@
 [//]: # (Image References)
 [image1]: ./output_images/Training Data Distribution.png
 [image2]: ./output_images/car_not_car.png
-[image2]: ./output_images/HOG_example.jpg
-[image3]: ./output_images/sliding_windows.jpg
+[image3]: ./output_images/FeatureVisuvalization.png
+[image8]: ./output_images/HOG_example.jpg
+[image9]: ./output_images/sliding_windows.jpg
 [image4]: ./output_images/sliding_window.jpg
 [image5]: ./output_images/bboxes_and_heat.png
 [image6]: ./output_images/labels_map.png
@@ -60,10 +61,18 @@ The final parameters used for feature extraction are shown below :
 | Number of histogram bins   | 32	 				  |
 
 
-I then explored different color spaces and different `skimage.hog()` parameters (`orientations`, `pixels_per_cell`, and `cells_per_block`).  I grabbed random images from each of the two classes and displayed them to get a feel for what the `skimage.hog()` output looks like.
+**_Feature Extraction_**
 
-Here is an example using the `YCrCb` color space and HOG parameters of `orientations=8`, `pixels_per_cell=(8, 8)` and `cells_per_block=(2, 2)`:
+* Each car and non car image is read and converted to YCrCb color space
+* Spatial features are extracted using a 32 x 32 resize parameter across all 3 channels of the input image and stacked together
+* Color histogram is extracted across all 3 channels of the input image and concatenated together
+* HOG feature is extracted for all 3 channels and appended together
+* The spatial, color and HOG features are appended together to produce the final image feature
 
+
+**_Feature Extraction Visualization_**
+
+Below is the visualiztion of the feature extraction on a sample car and non image.
 
 ![alt text][image2]
 
