@@ -100,21 +100,21 @@ The code for training the classifier can be found under the "Train the classifie
 The code for sliding window search is contained in the function **find_cars()_** that can be found under the "Vehicle Detection" section of the IPython notebook. 
 The code for running the search and drawing boxes is contained in the function **detection_pipeline_** that can be found under the "Vehicle Detection Pipeline" section of the IPython notebook. 
 
-*The search window is restricted to the bottom half of the image that has road and vehicles in it.  Top and bottom y limits of 400 and 656 has been applied for this project.
-*Four scales are used for this project - 1, 1.5, 2, 2.5
-*For each scale, the image is scanned for vehicles using sliding window search as described below :
-    * Input image is trimmed as per the y top and bottom limits provided
-    * If a scale other than 1 is used, the image is resized proportionate to the scale
-    * The block and step size are calculated using the resized image shape and cell_per_block parameters
-    * The x and y steps are calculated using block size, blocks per window and cells per step.
-    * The image channel wise HOG features for the entire image are extracted ONLY ONCE per scale.  This will be reused when the sliding through the image instead of calculating every time for effeciency.
-    * A window is slide through the image to extract the color and spatial features.  The HOG features for the window is extracted from the already calculated full image HOG features
-    * The color, spatial and HOG features are stacked together to form the final image feature
-    * The final image feature is standardized using sklearn.preprocessing.StandardScaler() function.
-    * The classifier is run on the standardized feature to predict if the window has car image or not.
-    * If a car is detected in any of the windows during sliding, the box coordinates are calculated and appended to the list of detected boxes.
-    * The above process is repeated for each scale
-*The result of the sliding window search is a list of boxes where cars were identified.
+*The search window is restricted to the bottom half of the image that has road and vehicles in it.  Top and bottom y limits of 400 and 656 has been applied for this project. 
+*Four scales are used for this project - 1, 1.5, 2, 2.5.
+*For each scale, the image is scanned for vehicles using sliding window search as described below : 
+    * Input image is trimmed as per the y top and bottom limits provided. 
+    * If a scale other than 1 is used, the image is resized proportionate to the scale. 
+    * The block and step size are calculated using the resized image shape and cell_per_block parameters. 
+    * The x and y steps are calculated using block size, blocks per window and cells per step. 
+    * The image channel wise HOG features for the entire image are extracted ONLY ONCE per scale.  This will be reused when the sliding through the image instead of calculating every time for effeciency. 
+    * A window is slide through the image to extract the color and spatial features.  The HOG features for the window is extracted from the already calculated full image HOG features. 
+    * The color, spatial and HOG features are stacked together to form the final image feature. 
+    * The final image feature is standardized using sklearn.preprocessing.StandardScaler() function. 
+    * The classifier is run on the standardized feature to predict if the window has car image or not. 
+    * If a car is detected in any of the windows during sliding, the box coordinates are calculated and appended to the list of detected boxes. 
+    * The above process is repeated for each scale. 
+*The result of the sliding window search is a list of boxes where cars were identified. 
 
 The below image shows the full set of overlapping windows that will be used for detecting vehicles.    
 
