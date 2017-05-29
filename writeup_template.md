@@ -15,9 +15,9 @@
 * Estimate a bounding box for vehicles detected.
 
 [//]: # (Image References)
-[image1]: ./output_images/Training Data Distribution.png
-[image2]: ./output_images/car_not_car.png
-[image3]: ./output_images/FeatureVisuvalization.png
+[image1]: ./output_images/TrainingDataDistribution.png "Training data distribution"
+[image2]: ./output_images/car_not_car.png "Sample Car and Non car images"
+[image3]: ./output_images/FeatureVisuvalization.png "Feature extraction visualiztion"
 [image8]: ./output_images/HOG_example.jpg
 [image9]: ./output_images/sliding_windows.jpg
 [image4]: ./output_images/sliding_window.jpg
