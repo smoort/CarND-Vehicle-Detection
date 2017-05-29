@@ -2,7 +2,11 @@
 
 ### This is a write up on the vehicle detection and tracking project
 
-Project code can be found in the TrackVehicle.ipynb jupyter notebook file in https://github.com/smoort/CarND-Vehicle-Detection repo.
+Project code can be found in the TrackVehicle.ipynb jupyter notebook file in https://github.com/smoort/CarND-Vehicle-Detection repo.  The notebook has 3 sections :
+
+1. Section 1 : Code to train the classifier
+2. Section 2 : Code to detect vehicles from images or videos using the trained classifier to detect cars.
+3. Section 3 : Code from 'Advanced Lane Finding' copied to draw lanes along with vehicle detection.
 
 ---
 
