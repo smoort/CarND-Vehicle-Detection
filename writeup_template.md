@@ -20,9 +20,9 @@
 [image3]: ./output_images/FeatureVisuvalization.png "Feature extraction visualiztion"
 [image4]: ./output_images/sliding_windows.jpg "Sliding windows"
 [image5]: ./output_images/cars_identified.jpg "Vehicles Identified"
+[image6]: ./output_images/bboxes_and_heat.png "Bboxes and heatmap"
 [image9]: ./output_images/sliding_window.jpg
-[image8]: ./output_images/bboxes_and_heat.png
-[image6]: ./output_images/labels_map.png
+[image8]: ./output_images/labels_map.png
 [image7]: ./output_images/output_bboxes.png
 [video1]: ./project_video.mp4
 
@@ -156,22 +156,22 @@ The code for removing false positives is contained in the function **detection_p
 **_Removing false positives using previous vehicle position_**
 
 * The heat map identified in a frame are recorded in a tracker called track.
-* The heat map from the current frame is added to the heat maps from the last 3 frames and averaged out.
-* A heat threshold of 3 is set - any area without three overlapping boxes is discarded as false positive.
+* The heat map from the current frame is added to the heat maps from the last 5 frames and averaged out.
+* A heat threshold of 5 is set - any area without three overlapping boxes is discarded as false positive.
 * This will ensure that any false positive identified only in the current frame is discarded by the threshold.
 * scipy.ndimage.measurements.label() is used to identify individual blobs in the heatmap. These blobs represents vehicles in the image.
 
 Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
 
-### Here are six frames and their corresponding heatmaps:
+### Here are five frames and their corresponding heatmaps:
 
-![alt text][image9]
-
-### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
 ![alt text][image6]
 
-### Here the resulting bounding boxes are drawn onto the last frame in the series:
+### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all five frames:
 ![alt text][image7]
+
+### Here the resulting bounding boxes are drawn onto the last frame in the series:
+![alt text][image8]
 
 
 
