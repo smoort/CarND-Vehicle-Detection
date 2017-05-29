@@ -21,8 +21,8 @@
 [image4]: ./output_images/sliding_windows.jpg "Sliding windows"
 [image5]: ./output_images/cars_identified.jpg "Vehicles Identified"
 [image6]: ./output_images/bboxes_and_heat.png "Bboxes and heatmap"
-[image7]: ./output_images/labels_map.png "Labels map"
-[image8]: ./output_images/output_bboxes.png "Marked image"
+[image7]: ./output_images/labels_map.jpg "Labels map"
+[image8]: ./output_images/output_bboxes.jpg "Marked image"
 
 ---
 
