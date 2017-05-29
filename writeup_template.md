@@ -19,9 +19,9 @@
 [image2]: ./output_images/car_not_car.png "Sample Car and Non car images"
 [image3]: ./output_images/FeatureVisuvalization.png "Feature extraction visualiztion"
 [image4]: ./output_images/sliding_windows.jpg "Sliding windows"
-[image8]: ./output_images/HOG_example.jpg
+[image5]: ./output_images/cars_identified.jpg "Vehicles Identified"
 [image9]: ./output_images/sliding_window.jpg
-[image5]: ./output_images/bboxes_and_heat.png
+[image8]: ./output_images/bboxes_and_heat.png
 [image6]: ./output_images/labels_map.png
 [image7]: ./output_images/output_bboxes.png
 [video1]: ./project_video.mp4
@@ -122,9 +122,17 @@ The below image shows the full set of overlapping windows that will be used for 
 
 ####2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
-Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
+Below is the result of the pipeline on a test image
 
-![alt text][image9]
+![alt text][image5]
+
+**_Steps taken to optimize the classifier :_**
+
+* Feature parameters were optimized keeping accuracy and speed in consideration.
+* Using YCrCb instead of RGB color space provided good increase in accuracy without impacting training or prediction time much.
+* Using ALL channels instead of a single channel increased accuracy significantly, the increase in prediction time was proportionate and worth the trade-off.
+* For example, increasing HOG orient or number of histogram bins provided marginal improvement in accuracy but increased prediction time disproportionately.
+* The number of scales were experimented between 2 scales to 6 scales.  Using 4 scales provided good prediction accuracy but at the cost of slight increase in prediction time.  The cost benefit was good enough to consider using 4 scales.
 ---
 
 ### Video Implementation
@@ -143,7 +151,7 @@ Here's an example result showing the heatmap from a series of frames of video, t
 
 ### Here are six frames and their corresponding heatmaps:
 
-![alt text][image5]
+![alt text][image9]
 
 ### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
 ![alt text][image6]
