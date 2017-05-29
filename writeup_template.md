@@ -23,6 +23,7 @@
 [image6]: ./output_images/bboxes_and_heat.png "Bboxes and heatmap"
 [image7]: ./output_images/labels_map.png "Labels map"
 [image8]: ./output_images/output_bboxes.png "Marked image"
+
 ---
 
 ### *Histogram of Oriented Gradients (HOG)*
