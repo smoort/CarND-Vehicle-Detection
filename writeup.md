@@ -2,6 +2,7 @@
 
 ### This is a write up on the vehicle detection and tracking project
 
+Project code can be found in the TrackVehicle.ipynb jupyter notebook file in https://github.com/smoort/CarND-Vehicle-Detection repo.
 
 ---
 
@@ -145,7 +146,7 @@ Below is the result of the pipeline on a test image
 
 ** 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)**
 
-The final video output video_output.mp4 can be found in https://github.com/smoort/CarND-Vehicle-Detection repo.
+The final video output project_video_output.mp4 can be found in https://github.com/smoort/CarND-Vehicle-Detection repo.
 
 ####2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
 
